@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+   	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="pragma" content="no-cache" />
+	<meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+	<meta HTTP-EQUIV="expires" CONTENT="0">
+	<title>ICP</title>
+    
+    <!-- easyui css -->
+   	<link href="css/easyui-themes/default/easyui.css" rel="stylesheet" type="text/css" />
+   	<link href="css/easyui-themes/icon.css" rel="stylesheet" type="text/css" />
+   	<!-- zTree css -->
+    <link href="css/zTree/zTreeStyle.css" rel="stylesheet" type="text/css" />
+    <!-- self css-->
+    <link href="css/default.css" rel="stylesheet" type="text/css" />
+    <link href="css/amap.css" rel="stylesheet" type="text/css" />
+    
+    <!-- easyui js-->	
+<!--    <script type="text/javascript" src="js/library/jquery-1.11.3.js"></script>-->
+    <script type="text/javascript" src="js/library/jquery.min.js"></script>
+    <script type="text/javascript" src="js/library/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="js/library/jquery.easyui.min.js"></script>
+    <!-- ztree js-->	
+	<script type="text/javascript" src="js/library/jquery.ztree.core-3.5.js"></script>
+	<script type="text/javascript" src="js/library/jquery.ztree.excheck-3.5.js"></script>
+	<!-- amap -->
+	<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=e232ca43fd4245a35401d8467466d098"></script>
+	<!-- editor -->
+	<script type="text/javascript" src="plugin/tinymce/tinymce.min.js"></script>
+	
+    <!-- common js -->
+    <script type="text/javascript" src="js/common/app.js"></script>
+    <script type="text/javascript" src="js/common/common.js"></script>
+    <script type="text/javascript" src="js/common/tools.js"></script>
+    <script type="text/javascript" src="js/common/amap.js"></script>
+    <script type="text/javascript" src="js/common/encrypt.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    
+    <!-- admin user management js file -->
+    <!-- news management module -->
+    <script type="text/javascript" src="js/admin/news/newsManage.js?v=20150727"></script>
+    <script type="text/javascript" src="js/admin/news/newsTypeManage.js?v=20150727"></script>
+	<!-- activity management module -->    
+    <script type="text/javascript" src="js/admin/act/activityManage.js?v=20150727"></script>
+    <script type="text/javascript" src="js/admin/act/actTypeManage.js?v=20150727"></script>
+    <script type="text/javascript" src="js/admin/act/actPartcipantsManage.js?v=20150727"></script>
+    <script type="text/javascript" src="js/admin/act/actCommentsManage.js?v=20150727"></script>
+    <!-- orgnization management module -->   
+    <script type="text/javascript" src="js/admin/org/orgMemberManage.js?v=20150727"></script>
+    <script type="text/javascript" src="js/admin/org/orgManage.js?v=20150727"></script>
+    <script type="text/javascript" src="js/admin/org/positionManage.js?v=20150727"></script>
+    <script type="text/javascript" src="js/admin/org/orgReqManage.js?v=20150727"></script>
+    <script type="text/javascript" src="js/admin/org/myOrgMemberManage.js?v=20150727"></script>
+    <script type="text/javascript" src="js/admin/org/orgTypeManage.js?v=20150727"></script>
+    <!-- system management module  -->
+    <script type="text/javascript" src="js/admin/sys/roleManage.js?v=20150727"></script>
+    <script type="text/javascript" src="js/admin/sys/adminUserManage.js?v=20150727"></script>
+<!--     <script type="text/javascript" src="js/admin/sys/appUserManage.js"></script> -->
+	<!-- finance management module  -->
+	<script type="text/javascript" src="js/admin/pay/payment.js"></script>
+	<script type="text/javascript" src="js/admin/pay/payHistory.js"></script>
+	<script type="text/javascript" src="js/admin/pay/payTypeManage.js"></script>
+    <!-- test data-->
+    <script type="text/javascript" src="js/testData.js"></script>
+    
+  </head>
+  
+  <body class="easyui-layout" style="overflow-y: hidden" fit="true" scroll="no">
+		<noscript>
+			<div
+				style="position: absolute; z-index: 100000; height: 2046px; top: 0px; left: 0px; width: 100%; background: white; text-align: center;">
+				<img src="images/noscript.gif" alt='抱歉，请开启脚本支持！' />
+			</div>
+		</noscript>
+		
+		<div id="loading-mask"
+			style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; background: #D2E0F2; z-index: 20000">
+			<div id="pageloading"
+				style="position: absolute; top: 50%; left: 50%; margin: -120px 0px 0px -120px; text-align: center; border: 2px solid #8DB2E3; width: 200px; height: 40px; font-size: 14px; padding: 10px; font-weight: bold; background: #fff; color: #15428B;">
+				<img src="images/loading.gif" align="absmiddle" />
+				正在加载中,请稍候...
+			</div>
+		</div>
+		
+		<div region="north" split="true" border="false"
+			style="overflow: hidden; height: 30px; background: url(images/layout-browser-hd-bg.gif) #7f99be repeat-x center 60%; line-height: 20px; color: #fff; font-family: Verdana, 微软雅黑, 黑体">
+			<span style="padding-left: 10px; font-size: 16px;" class="head">
+				<img src="images/blocks.gif" width="20" height="20" align="absmiddle" />
+				ICP管理平台
+			</span>
+			<span style="float: right; padding-right: 10px;" class="head">
+				欢迎 <span id="userSpan"></span> 
+<!--				&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="easyui-linkbutton" id="loginOut">注&nbsp;销</a>-->
+				&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" id="loginOut">注&nbsp;销</a>
+			</span>
+		</div>
+		
+		<!-- 左侧导航 -->
+		<div data-options="region:'west',split:true,title:'导航菜单', fit:false,iconCls:'icon-house'"  style="width:200px;"> 
+		  <div class="easyui-accordion" fit="true" border="false">
+		     <div style=" overflow: auto;">
+				<!--  导航内容 -->
+			    <ul id="indexleftMenuTree" class="ztree"></ul>	
+		     </div>
+			</div>
+		</div>
+		
+		<div id="mainPanle" region="center"
+			style="background: #eee; overflow-y: hidden">
+			<div id="tabs" class="easyui-tabs" fit="true" border="false">
+				<div title="欢迎使用" style="height:100%" id="main_tab_index">
+					<div class="easyui-layout" data-options="fit:true">
+						<div data-options="region:'center',split:true">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div region="south" split="true"
+			style="height: 12px; background: #D2E0F2;" id="main">
+		</div>
+  </body>
+</html>

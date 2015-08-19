@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<TITLE>内部交流平台</TITLE>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no" />
+<link rel="stylesheet" type="text/css" href="plant/css/style.css">
+<!-- Mobile Devices Support @begin -->
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+<meta content="no-cache" http-equiv="pragma">
+<meta content="0" http-equiv="expires">
+<meta content="telephone=no, address=no" name="format-detection">
+<!-- Mobile Devices Support @end -->
+<script type="text/javascript">
+	if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+		var version = parseFloat(RegExp.$1);
+		if (version > 2.3) {
+			var phoneScale = parseInt(window.screen.width) / 640;
+			document
+					.write('<meta name="viewport" content="width=640, minimum-scale = '+ phoneScale +', maximum-scale = '+ phoneScale +', target-densitydpi=device-dpi">');
+		} else {
+			document
+					.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');
+		}
+	} else {
+		document
+				.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
+	}
+</script>
+<style type="text/css">
+	body {
+		font-family: "Microsoft YaHei", Arial, Verdana, Helvetica, sans-serif;
+		color: #777;
+		text-align: center;
+		margin: 0;
+		padding: 0;
+		font-size: 18px;
+	}
+	
+	html {
+		height: 100%;
+		font-size: 24px;
+	}
+	
+	.content {
+		max-width: 640px;
+		margin: auto;
+		min-height: 100%;
+		position: relative;
+		height: 100%;
+		padding: 0px;
+		background: #fff;
+	}
+	
+	.content img {
+		width: 100%;
+	}
+	
+	
+	.eventlist li {
+		list-style: none;
+		text-align: left;
+		display: block;
+		height: 50px;
+		line-height: 50px;
+		border-bottom: 1px solid #ececec;
+		padding: 0 10px
+	}
+	
+	.eventlist li img {
+		width: 25px !important;
+		vertical-align: middle;
+		padding: 0 10px 0 0;
+	}
+	
+	.eventinfo {
+		line-height: 36px;
+		text-align: justify;
+		text-justify: inter-ideograph;
+		padding: 20px 10px;
+	}
+	
+	.event h3 {
+		color: #222;
+		padding: 10px 10px 20px 10px;
+		margin: 0;
+		font-size: 26px;
+		line-height: 40px;
+		font-weight: normal;
+		text-align: left;
+		border-bottom: 1px solid #ececec
+	}
+</style>
+</head>
+
+<body>
+	<div class="content event">
+		<div class="eventinfo" id="content">
+		</div>
+	</div>
+</body>
+</html>

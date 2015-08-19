@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+	<!-- this bean must not be lazily initialized if the exporting is to happen -->
+	<bean id="exporter" class="org.springframework.jmx.export.MBeanExporter"
+		lazy-init="false">
+		<property name="beans">
+			<map>
+<!-- 				<entry key="bean:name=icpRealm" value-ref="icpRealmMBean" /> -->
+<!-- 				<entry key="bean:name=orgMemControllerMBean" value-ref="orgMemControllerMBean" /> -->
+<!-- 				<entry key="bean:name=logBean" value-ref="logManager" /> -->
+			</map>
+		</property>
+	</bean>
+
+<!-- 	<bean id="icpRealmMBean" class="com.hexin.core.shiro.IcpRealm"></bean> -->
+<!-- 	<bean id="orgMemControllerMBean" class="com.hexin.icp.controller.OrgMemberController"></bean> -->
+	<bean name="logManager" class="org.apache.log4j.jmx.HierarchyDynamicMBean"/>
+
+	<!-- 远程连接 RMI方式 -->
+	<!-- 地址输入 service:jmx:rmi://localhost/jndi/rmi://192.168.1.100:8080/myconnector -->
+	<bean class="org.springframework.jmx.support.ConnectorServerFactoryBean"
+		depends-on="rmiRegistry" lazy-init="false">
+		<property name="objectName" value="connector:name=rmi" />
+
+		<!-- 远程连接的地址 -->
+		<property name="serviceUrl"
+			value="service:jmx:rmi://localhost/jndi/rmi://localhost:9999/icpConnector" />
+	</bean>
+
+	<!-- 使用JNDI-RMI的方式进行远程连接通讯,并且配置占用端口号 -->
+	<bean id="rmiRegistry" class="org.springframework.remoting.rmi.RmiRegistryFactoryBean">
+		<property name="port" value="9999" />
+	</bean>
+
+</beans>

@@ -1,0 +1,50 @@
+#mapContainer {
+	/*position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;*/
+}
+
+#tip {
+	width:200px;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	padding-left: 10px;
+	padding-right: 2px;
+	min-height: 65px;
+	position:absolute;
+	top: 10px;
+	font-size: 12px;
+	right: 20px;
+	border-radius: 3px;
+	overflow: hidden;
+	line-height: 20px;
+	min-width: 100px;
+	z-index:1;
+}
+
+#tip input[type="button"] {
+	background-color: #0D9BF2;
+	height: 25px;
+	text-align: center;
+	line-height: 25px;
+	color: #fff;
+	font-size: 12px;
+	border-radius: 3px;
+	outline: none;
+	border: 0;
+	cursor: pointer;
+}
+
+#tip input[type="text"] {
+	height: 25px;
+	border: 1px solid #ccc;
+	padding-left: 5px;
+	border-radius: 3px;
+	outline: none;
+}
+
+#result1 {
+	max-height: 300px;
+}

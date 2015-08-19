@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet author="Administrator (generated)" id="1434435407925-1">
+        <createTable tableName="t_act_comment">
+            <column autoIncrement="true" name="act_comment_id" remarks="主键" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="user_id" remarks="用户id" type="INT"/>
+            <column name="activity_id" remarks="活动id" type="INT"/>
+            <column name="content" remarks="评价内容" type="VARCHAR(1000)"/>
+            <column name="create_time" remarks="创建时间" type="datetime"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1434435407925-2">
+        <createTable tableName="t_activity">
+            <column autoIncrement="true" name="activity_id" remarks="主键" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="type" remarks="0-会议，1-项目，2-交流，3-合作" type="VARCHAR(1)"/>
+            <column name="orgnizer" remarks="主办方" type="VARCHAR(50)"/>
+            <column name="title" remarks="活动名称" type="VARCHAR(50)"/>
+            <column name="start_time" remarks="活动开始时间" type="VARCHAR(50)"/>
+            <column name="end_time" remarks="活动结束时间" type="VARCHAR(50)"/>
+            <column name="place" remarks="活动地点" type="VARCHAR(50)"/>
+            <column name="background" remarks="活动背景" type="VARCHAR(1000)"/>
+            <column name="agenda" remarks="活动议程" type="VARCHAR(1000)"/>
+            <column name="guest" remarks="活动嘉宾" type="VARCHAR(200)"/>
+            <column name="content" remarks="活动内容" type="BLOB"/>
+            <column name="issuer_id" remarks="发布方id" type="INT"/>
+            <column name="issuer_type" remarks="1-个人，2-组织" type="VARCHAR(1)"/>
+            <column name="create_time" remarks="创建时间" type="datetime"/>
+            <column name="create_by" remarks="创建人用户id" type="INT"/>
+            <column name="last_update_time" remarks="最近更新时间" type="datetime"/>
+            <column name="last_update_by" remarks="更新人用户id" type="INT"/>
+            <column defaultValue="0" name="del_flag" remarks="删除标识" type="VARCHAR(1)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1434435407925-3">
+        <createTable tableName="t_app_lable_index">
+            <column autoIncrement="true" name="dict_id" remarks="主键" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="label_class" remarks="标签大类" type="VARCHAR(50)"/>
+            <column name="label_cd" remarks="键" type="VARCHAR(50)"/>
+            <column name="label_text" remarks="值" type="VARCHAR(50)"/>
+            <column name="create_time" remarks="创建时间" type="datetime"/>
+            <column defaultValue="0" name="del_flag" remarks="1-软删除" type="VARCHAR(1)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1434435407925-4">
+        <createTable tableName="t_comment_reply">
+            <column autoIncrement="true" name="reply_id" remarks="主键" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="comment_id" remarks="用户id" type="INT"/>
+            <column name="pre_user_id" remarks="上级回复人id" type="INT"/>
+            <column name="cur_user_id" remarks="当前回复人id" type="INT"/>
+            <column name="content" remarks="回复内容" type="VARCHAR(1000)"/>
+            <column name="create_time" remarks="创建时间" type="datetime"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1434435407925-5">
+        <createTable tableName="t_company">
+            <column autoIncrement="true" name="company_id" remarks="主键" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="company_name" remarks="公司名称" type="VARCHAR(50)"/>
+            <column name="company_intro" remarks="公司简介" type="VARCHAR(200)"/>
+            <column name="company_tel" remarks="电话" type="VARCHAR(50)"/>
+            <column name="company_mobile" remarks="手机" type="INT"/>
+            <column name="company_email" remarks="邮箱" type="VARCHAR(50)"/>
+            <column name="company_address" remarks="地址" type="VARCHAR(100)"/>
+            <column name="company_others" remarks="其他" type="VARCHAR(50)"/>
+            <column name="create_time" remarks="创建时间" type="datetime"/>
+            <column defaultValue="0" name="del_flag" remarks="1-软删除" type="VARCHAR(1)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1434435407925-6">
+        <createTable tableName="t_fri_req">
+            <column autoIncrement="true" name="fri_req_id" remarks="主键" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="source_id" remarks="申请人用户id" type="INT"/>
+            <column name="target_id" remarks="接收人用户id" type="INT"/>
+            <column name="remark" remarks="备注信息" type="VARCHAR(100)"/>
+            <column name="create_time" remarks="创建时间" type="datetime"/>
+            <column defaultValue="0" name="status" remarks="请求状态（0-待审核，1-已通过，2-已拒绝）" type="VARCHAR(1)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1434435407925-7">
+        <createTable tableName="t_friend">
+            <column autoIncrement="true" name="friend_id" remarks="主键" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="source_id" remarks="source_id" type="INT"/>
+            <column name="target_id" remarks="target_id" type="INT"/>
+            <column name="note_name" remarks="备注名称" type="VARCHAR(50)"/>
+            <column name="create_time" remarks="创建时间" type="datetime"/>
+            <column defaultValue="0" name="del_flag" remarks="1-软删除" type="VARCHAR(1)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1434435407925-8">
+        <createTable tableName="t_img">
+            <column defaultValue="" name="img_id" remarks="主键" type="VARCHAR(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="path" remarks="存储路径" type="VARCHAR(100)"/>
+            <column name="compress_path" remarks="压缩存储路径" type="VARCHAR(100)"/>
+			<column name="width" remarks="宽" type="DOUBLE(5,1)"/> 
+			<column name="height" remarks="" type="DOUBLE(5,1)"/> 
+            <column name="create_time" remarks="创建时间" type="datetime"/>
+            <column defaultValue="0" name="del_flag" remarks="删除标识（1-软删除）" type="CHAR(10)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1434435407925-9">
+        <createTable tableName="t_img_rel">
+            <column autoIncrement="true" name="img_rel_id" remarks="主键" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="img_id" remarks="图片id" type="INT"/>
+            <column name="rel_id" remarks="关联id" type="INT"/>
+            <column name="rel_type" remarks="1-用户头像，2-组织头像，3-新闻首图，4-新闻内容图片，5-活动概况，6-活动背景，7-活动议程，8-嘉宾，9-活动内容" type="VARCHAR(2)"/>
+            <column name="create_time" remarks="创建时间" type="datetime"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1434435407925-10">
+        <createTable tableName="t_msg">
+            <column autoIncrement="true" name="msg_id" remarks="主键" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="type" remarks="消息类型（0-系统消息,1-入会申请,2-好友申请）" type="VARCHAR(1)"/>
+            <column name="source_type" remarks="消息来源类型(1-组织，2--个人)" type="VARCHAR(1)"/>
+            <column name="source_id" remarks="用户id" type="INT"/>
+            <column name="target_id" remarks="用户或组织id" type="INT"/>
+            <column name="create_time" remarks="创建时间" type="datetime"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1434435407925-11">
+        <createTable tableName="t_news">
+            <column autoIncrement="true" name="news_id" remarks="主键" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="source" remarks="新闻来源" type="VARCHAR(50)"/>
+            <column name="title" remarks="新闻标题" type="VARCHAR(50)"/>
+            <column name="content" remarks="内容" type="BLOB"/>
+            <column name="issuer_id" remarks="发布方id" type="INT"/>
+            <column name="issuer_type" remarks="1-个人，2-组织" type="VARCHAR(1)"/>
+            <column name="create_time" remarks="创建时间" type="datetime"/>
+            <column name="create_by" remarks="创建人用户id" type="INT"/>
+            <column name="last_update_time" remarks="最近更新时间" type="datetime"/>
+            <column name="last_update_by" remarks="更新人用户id" type="INT"/>
+            <column defaultValueNumeric="0" name="del_flag" remarks="删除标识" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1434435407925-12">
+        <createTable tableName="t_news_rel">
+            <column autoIncrement="true" name="news_rel_id" remarks="主键" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="news_id" remarks="新闻id" type="INT"/>
+            <column name="issuer_id" remarks="发布方id" type="INT"/>
+            <column name="issuer_type" remarks="1-个人,2-组织,3-公司" type="VARCHAR(1)"/>
+            <column name="create_time" remarks="创建时间" type="datetime"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1434435407925-13">
+        <createTable tableName="t_org">
+            <column autoIncrement="true" name="org_id" remarks="主键" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="parent_id" remarks="父组织id" type="INT"/>
+            <column name="org_type" remarks="组织类型（0-支部，1-分部）" type="VARCHAR(1)"/>
+            <column name="org_code" remarks="机构代码" type="VARCHAR(20)"/>
+            <column name="org_name" remarks="组织名称" type="VARCHAR(50)"/>
+            <column name="org_note" remarks="会长寄语" type="VARCHAR(200)"/>
+            <column name="org_intro" remarks="组织简介" type="VARCHAR(200)"/>
+            <column name="org_tel" remarks="电话" type="VARCHAR(50)"/>
+            <column name="org_mobile" remarks="手机" type="INT"/>
+            <column name="org_email" remarks="邮箱" type="VARCHAR(50)"/>
+            <column name="org_address" remarks="地址" type="VARCHAR(100)"/>
+            <column name="org_others" remarks="其他" type="VARCHAR(50)"/>
+            <column name="create_time" remarks="创建时间" type="datetime"/>
+            <column defaultValue="0" name="del_flag" remarks="删除标识（1-软删除）" type="VARCHAR(1)"/>
+            <column name="org_fax" type="VARCHAR(13)"/>
+            <column name="org_show_member_falg" remarks="是否显示成员,(1表示显示，0表示不显示" type="INT"/>
+            <column name="org_latitude" type="VARCHAR(15)"/>
+            <column name="org_longitude" type="VARCHAR(15)"/>
+            <column name="org_join_status" remarks="0表示不允许加入，1表示允许申请加入" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1434435407925-14">
+        <createTable tableName="t_org_members">
+            <column name="org_mem_internal_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="org_id" type="INT"/>
+            <column name="person_id" type="INT"/>
+            <column name="person_join_date" type="datetime"/>
+            <column defaultValueNumeric="0" name="person_status" remarks="1表示软删除" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1434435407925-15">
+        <createTable tableName="t_org_req">
+            <column autoIncrement="true" name="org_req_id" remarks="主键" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="org_id" remarks="组织id" type="INT"/>
+            <column name="user_id" remarks="请求人用户id" type="INT"/>
+            <column name="request" remarks="入会申请" type="VARCHAR(500)"/>
+            <column name="create_time" remarks="创建时间" type="datetime"/>
+            <column defaultValue="0" name="status" remarks="0-待审核，1-已通过，2-已拒绝" type="VARCHAR(1)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1434435407925-16">
+        <createTable tableName="t_permission">
+            <column autoIncrement="true" name="role_res_id" remarks="主键" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="role_id" remarks="角色id" type="INT"/>
+            <column name="resource_id" remarks="资源id" type="INT"/>
+            <column name="permission" remarks="权限" type="VARCHAR(10)"/>
+            <column name="create_time" remarks="创建时间" type="datetime"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1434435407925-17">
+        <createTable tableName="t_person">
+            <column autoIncrement="true" name="person_id" remarks="主键" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="person_name" remarks="姓名" type="VARCHAR(50)"/>
+            <column name="person_tel" remarks="电话" type="VARCHAR(50)"/>
+            <column name="person_mobile" remarks="手机" type="INT"/>
+            <column name="person_email" remarks="邮箱" type="VARCHAR(50)"/>
+            <column name="person_address" remarks="地址" type="VARCHAR(100)"/>
+            <column name="person_others" remarks="其他" type="VARCHAR(50)"/>
+            <column name="last_update_time" remarks="最近更新时间" type="datetime"/>
+            <column name="create_time" remarks="创建时间" type="datetime"/>
+            <column name="create_by" remarks="创建人用户id" type="INT"/>
+            <column name="last_update_by" remarks="更新人用户id" type="INT"/>
+            <column defaultValue="0" name="del_flag" remarks="1-软删除" type="VARCHAR(1)"/>
+            <column name="person_job" remarks="公司职务" type="VARCHAR(100)"/>
+            <column name="person_industry" remarks="公司行业" type="VARCHAR(50)"/>
+            <column name="person_company" remarks="公司名称" type="VARCHAR(100)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1434435407925-18">
+        <createTable tableName="t_person_title">
+            <column autoIncrement="true" name="person_title_id" remarks="主键" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="person_id" remarks="个人id" type="INT"/>
+            <column name="title_id" remarks="职务id" type="INT"/>
+            <column name="create_time" remarks="创建时间" type="datetime"/>
+            <column defaultValue="0" name="del_flag" remarks="删除标识(1-软删除)" type="VARCHAR(1)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1434435407925-19">
+        <createTable tableName="t_position">
+            <column autoIncrement="true" name="position_id" remarks="主键" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="org_id" remarks="机构id" type="INT"/>
+            <column name="pos_name" remarks="职位名称" type="VARCHAR(50)"/>
+            <column name="level" remarks="级别" type="VARCHAR(2)"/>
+            <column name="show_detail_inner" remarks="是否内部显示详细信息(0-不显示，1-显示)" type="VARCHAR(1)"/>
+            <column name="show_detail_outter" remarks="是否外部显示详细信息(0-不显示，1-显示)" type="VARCHAR(1)"/>
+            <column name="create_time" remarks="创建时间" type="datetime"/>
+            <column defaultValue="0" name="del_flag" remarks="删除标识" type="VARCHAR(1)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1434435407925-20">
+        <createTable tableName="t_resource">
+            <column autoIncrement="true" name="resource_id" remarks="主键" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="parent_id" remarks="父资源id" type="INT"/>
+            <column name="name" remarks="资源名" type="VARCHAR(50)"/>
+            <column name="label" remarks="资源标签" type="VARCHAR(100)"/>
+            <column name="describe" remarks="资源描述" type="VARCHAR(100)"/>
+            <column name="attr" remarks="资源属性" type="VARCHAR(10)"/>
+            <column name="attr_desc" remarks="资源属性说明" type="VARCHAR(50)"/>
+            <column name="sort" remarks="排序" type="VARCHAR(10)"/>
+            <column name="create_time" remarks="创建时间" type="datetime"/>
+            <column name="create_by" remarks="创建人用户id" type="INT"/>
+            <column name="last_update_time" remarks="最近更新时间" type="datetime"/>
+            <column name="last_update_by" remarks="更新人用户id" type="INT"/>
+            <column defaultValue="0" name="del_flag" remarks="1-软删除" type="VARCHAR(1)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1434435407925-21">
+        <createTable tableName="t_role">
+            <column autoIncrement="true" name="role_id" remarks="主键" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="parent_id" remarks="父角色id" type="INT"/>
+            <column name="role_name" remarks="角色名" type="VARCHAR(50)"/>
+            <column name="role_desc" remarks="角色说明" type="VARCHAR(50)"/>
+            <column name="create_time" remarks="创建时间" type="datetime"/>
+            <column defaultValue="0" name="del_flag" remarks="1-软删除" type="VARCHAR(1)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1434435407925-22">
+        <createTable tableName="t_title">
+            <column autoIncrement="true" name="title_id" remarks="主键" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="company_id" remarks="机构id" type="INT"/>
+            <column name="title_name" remarks="职位名称" type="VARCHAR(50)"/>
+            <column name="create_time" remarks="创建时间" type="datetime"/>
+            <column defaultValue="0" name="del_flag" remarks="删除标识" type="VARCHAR(1)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1434435407925-23">
+        <createTable tableName="t_user">
+            <column autoIncrement="true" name="user_id" remarks="主键" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="person_id" remarks="个人id" type="INT"/>
+            <column defaultValue="" name="username" remarks="用户名" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="password" remarks="密码" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="1" name="show_request" remarks="显示好友申请消息（0-不显示，1-显示）" type="VARCHAR(1)"/>
+            <column name="show_detail_inner" remarks="是否内部显示详细信息(0-不显示，1-显示)" type="VARCHAR(1)"/>
+            <column name="show_detail_outter" remarks="是否外部显示详细信息(0-不显示，1-显示)" type="VARCHAR(1)"/>
+            <column name="create_time" remarks="创建时间" type="datetime"/>
+            <column name="create_by" remarks="创建人用户id" type="INT"/>
+            <column name="last_update_time" remarks="最近更新时间" type="datetime"/>
+            <column name="last_update_by" remarks="更新人用户id" type="INT"/>
+            <column defaultValue="0" name="del_flag" remarks="1-软删除" type="VARCHAR(1)"/>
+            <column defaultValueNumeric="1" name="receive_msg_flag" remarks="Weather receive the message from the friend or not ,0 for yes, and 1 for no" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1434435407925-24">
+        <createTable tableName="t_user_act">
+            <column autoIncrement="true" name="user_act_id" remarks="主键" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="user_id" remarks="用户id" type="INT"/>
+            <column name="act_id" remarks="活动id" type="INT"/>
+            <column defaultValue="0" name="status" remarks="状态(0-待确认，1-已通过)" type="VARCHAR(1)"/>
+            <column name="create_time" remarks="创建时间" type="datetime"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1434435407925-25">
+        <createTable tableName="t_user_position">
+            <column autoIncrement="true" name="person_position_id" remarks="主键" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="user_id" remarks="用户id" type="INT"/>
+            <column name="position_id" remarks="职务id" type="INT"/>
+            <column name="create_time" remarks="创建时间" type="datetime"/>
+            <column defaultValue="0" name="del_flag" remarks="删除标识(1-软删除)" type="VARCHAR(1)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1434435407925-26">
+        <createTable tableName="t_user_role">
+            <column autoIncrement="true" name="user_role_id" remarks="主键" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="user_id" remarks="用户id" type="INT"/>
+            <column name="role_id" remarks="角色id" type="INT"/>
+            <column name="create_time" remarks="创建时间" type="datetime"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1434435407925-27">
+        <addPrimaryKey columnNames="img_id" constraintName="PRIMARY" tableName="t_img"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1434435407925-28">
+        <addPrimaryKey columnNames="org_mem_internal_id" constraintName="PRIMARY" tableName="t_org_members"/>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1434435407925-34">
+        <createView fullDefinition="false" viewName="v_user_position">select `icp`.`t_position`.`org_id` AS `org_id`,`icp`.`t_position`.`pos_name` AS `pos_name`,`icp`.`t_position`.`level` AS `level`,`icp`.`t_position`.`position_id` AS `position_id`,`icp`.`t_position`.`show_detail_inner` AS `show_detail_inner`,`icp`.`t_position`.`show_detail_outter` AS `show_detail_outter`,`icp`.`t_user_position`.`user_id` AS `user_id` from `icp`.`t_user_position` join `icp`.`t_position` where ((`icp`.`t_user_position`.`position_id` = `icp`.`t_position`.`position_id`) and (`icp`.`t_position`.`del_flag` = 0) and (`icp`.`t_user_position`.`del_flag` = 0))</createView>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1434435407925-29">
+        <createView fullDefinition="false" viewName="org_user_position">select `icp`.`t_org`.`org_id` AS `org_id`,`icp`.`t_org`.`org_type` AS `org_type`,`icp`.`t_org`.`org_name` AS `org_name`,(case when (`v_user_position`.`org_id` is not null) then _utf8'Y' else _utf8'N' end) AS `is_org_position_configured`,`v_user_position`.`position_id` AS `position_id`,`v_user_position`.`pos_name` AS `pos_name`,`v_user_position`.`user_id` AS `user_id` from (`icp`.`t_org` left join `icp`.`v_user_position` on((`icp`.`t_org`.`org_id` = `v_user_position`.`org_id`)))</createView>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1434435407925-30">
+        <createView fullDefinition="false" viewName="v_image">select `icp`.`t_img_rel`.`img_id` AS `img_id`,`icp`.`t_img_rel`.`rel_id` AS `rel_id`,`icp`.`t_img_rel`.`rel_type` AS `rel_type`,`icp`.`t_img`.`path` AS `path`,`icp`.`t_img`.`compress_path` AS `compress_path`,`icp`.`t_img`.`height` AS `height`,`icp`.`t_img`.`width` AS `width` from (`icp`.`t_img_rel` left join `icp`.`t_img` on((`icp`.`t_img`.`img_id` = `icp`.`t_img_rel`.`img_id`)))</createView>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1434435407925-31">
+        <createView fullDefinition="false" viewName="v_news">select `icp`.`t_news`.`news_id` AS `news_id`,`icp`.`t_news_rel`.`issuer_id` AS `issuer_id`,`icp`.`t_news_rel`.`issuer_type` AS `issuer_type`,`icp`.`t_news`.`title` AS `title`,`icp`.`t_news`.`source` AS `source`,`icp`.`t_news`.`content` AS `content`,`icp`.`t_news`.`del_flag` AS `del_flag` from (`icp`.`t_news` left join `icp`.`t_news_rel` on((`icp`.`t_news`.`news_id` = `icp`.`t_news_rel`.`news_id`))) where (`icp`.`t_news`.`del_flag` = 0)</createView>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1434435407925-32">
+        <createView fullDefinition="false" viewName="v_org_mems">select `org_user_position`.`org_id` AS `org_id`,`org_user_position`.`org_type` AS `org_type`,`org_user_position`.`org_name` AS `org_name`,`org_user_position`.`is_org_position_configured` AS `is_org_position_configured`,`org_user_position`.`position_id` AS `position_id`,`org_user_position`.`pos_name` AS `pos_name`,`org_user_position`.`user_id` AS `user_id`,`v_image`.`img_id` AS `img_id`,`v_image`.`rel_id` AS `rel_id`,`v_image`.`rel_type` AS `rel_type`,`v_image`.`path` AS `path`,`v_image`.`compress_path` AS `compress_path`,`v_image`.`height` AS `height`,`v_image`.`width` AS `width` from (`icp`.`org_user_position` left join `icp`.`v_image` on((`org_user_position`.`user_id` = `v_image`.`rel_id`))) where ((`org_user_position`.`user_id` is not null) and (`v_image`.`rel_type` = 1))</createView>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1434435407925-33">
+        <createView fullDefinition="false" viewName="v_org_mems_details">select `v_org_mems`.`org_id` AS `org_id`,`v_org_mems`.`org_type` AS `org_type`,`v_org_mems`.`org_name` AS `org_name`,`v_org_mems`.`is_org_position_configured` AS `is_org_position_configured`,`v_org_mems`.`position_id` AS `position_id`,`v_org_mems`.`pos_name` AS `pos_name`,`v_org_mems`.`user_id` AS `user_id`,`v_org_mems`.`img_id` AS `img_id`,`v_org_mems`.`rel_id` AS `rel_id`,`v_org_mems`.`rel_type` AS `rel_type`,`v_org_mems`.`path` AS `path`,`v_org_mems`.`compress_path` AS `compress_path`,`v_org_mems`.`height` AS `height`,`v_org_mems`.`width` AS `width`,`icp`.`t_person`.`person_id` AS `person_id`,`icp`.`t_person`.`person_name` AS `person_name`,`icp`.`t_person`.`person_tel` AS `person_tel`,`icp`.`t_person`.`person_mobile` AS `person_mobile`,`icp`.`t_person`.`person_email` AS `person_email`,`icp`.`t_person`.`person_address` AS `person_address`,`icp`.`t_person`.`person_others` AS `person_others`,`icp`.`t_person`.`last_update_time` AS `last_update_time`,`icp`.`t_person`.`create_time` AS `create_time`,`icp`.`t_person`.`create_by` AS `create_by`,`icp`.`t_person`.`last_update_by` AS `last_update_by`,`icp`.`t_person`.`del_flag` AS `del_flag`,`icp`.`t_person`.`person_job` AS `person_job`,`icp`.`t_person`.`person_industry` AS `person_industry`,`icp`.`t_person`.`person_company` AS `person_company` from `icp`.`v_org_mems` join `icp`.`t_person` where (`icp`.`t_person`.`person_id` = `v_org_mems`.`user_id`)</createView>
+    </changeSet>
+    <changeSet author="Administrator (generated)" id="1434435407925-35">
+        <createView fullDefinition="false" viewName="v_user_postion">select `icp`.`t_position`.`org_id` AS `org_id`,`icp`.`t_position`.`pos_name` AS `pos_name`,`icp`.`t_position`.`level` AS `level`,`icp`.`t_position`.`position_id` AS `position_id`,`icp`.`t_position`.`show_detail_inner` AS `show_detail_inner`,`icp`.`t_position`.`show_detail_outter` AS `show_detail_outter`,`icp`.`t_user_position`.`user_id` AS `user_id` from `icp`.`t_user_position` join `icp`.`t_position` where ((`icp`.`t_user_position`.`position_id` = `icp`.`t_position`.`position_id`) and (`icp`.`t_position`.`del_flag` = 0) and (`icp`.`t_user_position`.`del_flag` = 0))</createView>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A complete example of Cropper.">
+  <meta name="keywords" content="HTML, CSS, JS, JavaScript, jQuery, PHP, image cropping, web development">
+  <meta name="author" content="Fengyuan Chen">
+  <title>Crop Avatar - Cropper</title>
+  <link href="core/css/bootstrap.min.css" rel="stylesheet">
+  <link href="core/css/cropper.min.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="container" id="crop-avatar">
+
+    <!-- Cropping modal -->
+    <div class="modal fade" id="avatar-modal" aria-hidden="false" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1" style="padding-left:0px;">
+      <div class="modal-dialog modal-lg" style="width:880px; margin:-5px 0 0 -21px; overflow: hidden;">
+        <div class="modal-content">
+          <form class="avatar-form" action="/icp/rs/common/uploadImg" enctype="multipart/form-data" method="post">
+<!--             <div class="modal-header"> -->
+<!--               <button class="close" data-dismiss="modal" type="button">&times;</button> -->
+<!--               <h4 class="modal-title" id="avatar-modal-label">上传图片</h4> -->
+<!--             </div> -->
+            <div class="modal-body">
+              <div class="avatar-body">
+
+                <!-- Upload image and data -->
+                <div class="avatar-upload">
+                  <input class="avatar-src" name="avatar_src" type="hidden">
+                  <input class="avatar-data" name="avatar_data" type="hidden">
+                  <label for="avatarInput">选择文件</label>
+                  <input class="avatar-input" id="avatarInput" name="imgFile" type="file">
+                </div>
+                <!-- Crop and preview -->
+                <div class="row">
+                
+                  <div class="col-md-12" style="display:none">
+                    <div class="avatar-preview preview-lg"></div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="avatar-wrapper"></div>
+                  </div>
+                </div>
+                
+<!--                 <a id="download" download="image.jpg">下载图像</a> -->
+
+                <div class="row avatar-btns">
+                  <div class="col-md-3" style="width:25%;margin: 0 auto;">
+                    <button class="btn btn-primary btn-block avatar-save" type="submit" style="float:left">提交</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="modal-footer">
+              <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
+            </div> -->
+          </form>
+        </div>
+      </div>
+    </div><!-- /.modal -->
+
+    <!-- Loading state -->
+    <div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
+  </div>
+
+  <script src="core/js/jquery.min.js"></script>
+  <script src="core/js/bootstrap.min.js"></script>
+  <script src="core/js/cropper.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
